@@ -49,8 +49,7 @@ def get_predictions(image):
 
     image_pil = Image.fromarray(image[:, :, [2, 1, 0]])
 
-    predictions_pil = Image.fromarray(predictions[:, :, [2, 1, 0]]
-)
+    predictions_pil = Image.fromarray(predictions[:, :, [2, 1, 0]])
 
     byte_image = BytesIO()
     image_pil.save(byte_image, 'JPEG')
