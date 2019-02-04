@@ -10,6 +10,7 @@ from demo.simple_clothes_predictor import ClothesDemo
 from flask import Flask, request, render_template, send_file
 app = Flask(__name__)
 
+# set up the predictor from maskrcnn-benchmark
 config_file = "./maskrcnn-benchmark/configs/simple_clothes/e2e_faster-rcnn_inference.yaml"
 cfg.merge_from_file(config_file)
 cfg.merge_from_list(["MODEL.DEVICE", "cpu"])
@@ -19,6 +20,7 @@ predictor = ClothesDemo(
     confidence_threshold=0.7
 )
 
+# main page
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -41,6 +43,7 @@ def post_url():
 
     return render_template('index.html')
 
+# return the original image and model predictions as byte strings
 def get_predictions(image):
     predictions = predictor.run_on_opencv_image(image)
 
