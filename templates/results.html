@@ -1,0 +1,12 @@
+<h2> Simple garment detector </h2>
+
+Input an image URL
+<form method="POST">
+    <input name="texturl">
+    <input type="submit">
+</form>
+
+<h2> results </h2>
+{% for imgb64 in images %}
+    <img src="data:image/format;base64,{{ imgb64 }}" />
+{% endfor %}
